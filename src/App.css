@@ -1,0 +1,136 @@
+/* globals.css - Add this to your main CSS file or create a new one and import it in your App.js */
+
+:root {
+  /* Primary Brand Colors - Based on Al-Mahmood branding */
+  --primary-purple: #361E4B;        /* Deep purple from your brand */
+  --primary-purple-light: #8F59A0;  /* Medium purple */
+  --primary-purple-lighter: #E1C2DD; /* Light purple/pink */
+  --primary-white: #FFFFFF;          /* Pure white */
+  
+  /* Secondary Colors */
+  --secondary-pink: #E1C2DD;         /* Light pink from your palette */
+  --secondary-purple: #8F59A0;       /* Medium purple */
+  --accent-purple: #6B46C1;          /* Vibrant purple accent */
+  
+  /* Background Colors */
+  --bg-primary: #FFFFFF;             /* White background */
+  --bg-secondary: #F8F4FF;           /* Very light purple background */
+  --bg-purple-light: #F3E8FF;        /* Light purple background */
+  --bg-purple-dark: #361E4B;         /* Dark purple background */
+  --bg-gradient: linear-gradient(135deg, #361E4B 0%, #8F59A0 50%, #E1C2DD 100%);
+  
+  /* Text Colors */
+  --text-primary: #1F2937;           /* Dark gray for primary text */
+  --text-secondary: #6B7280;         /* Medium gray for secondary text */
+  --text-white: #FFFFFF;             /* White text */
+  --text-purple: #361E4B;            /* Purple text */
+  --text-purple-light: #8F59A0;      /* Light purple text */
+  
+  /* Border Colors */
+  --border-light: #E5E7EB;           /* Light gray border */
+  --border-purple: #E1C2DD;          /* Purple border */
+  --border-purple-dark: #8F59A0;     /* Dark purple border */
+  
+  /* Interactive States */
+  --hover-purple: #2D1B3D;           /* Darker purple for hover */
+  --hover-purple-light: #A855F7;     /* Lighter purple for hover */
+  --focus-purple: #8B5CF6;           /* Purple for focus states */
+  
+  /* Status Colors */
+  --success: #10B981;                /* Green for success */
+  --warning: #F59E0B;                /* Orange for warnings */
+  --error: #EF4444;                  /* Red for errors */
+  --info: #3B82F6;                   /* Blue for info */
+}
+
+/* Utility Classes for easy usage */
+.bg-primary { background-color: var(--primary-purple); }
+.bg-primary-light { background-color: var(--primary-purple-light); }
+.bg-primary-lighter { background-color: var(--primary-purple-lighter); }
+.bg-white { background-color: var(--primary-white); }
+.bg-secondary { background-color: var(--bg-secondary); }
+.bg-purple-light { background-color: var(--bg-purple-light); }
+.bg-gradient { background: var(--bg-gradient); }
+
+.text-primary { color: var(--text-primary); }
+.text-secondary { color: var(--text-secondary); }
+.text-white { color: var(--text-white); }
+.text-purple { color: var(--text-purple); }
+.text-purple-light { color: var(--text-purple-light); }
+
+.border-light { border-color: var(--border-light); }
+.border-purple { border-color: var(--border-purple); }
+.border-purple-dark { border-color: var(--border-purple-dark); }
+
+/* Button Styles using your brand colors */
+.btn-primary {
+  background-color: var(--primary-purple);
+  color: var(--text-white);
+  border: 2px solid var(--primary-purple);
+  transition: all 0.3s ease;
+}
+
+.btn-primary:hover {
+  background-color: var(--hover-purple);
+  border-color: var(--hover-purple);
+  transform: translateY(-2px);
+}
+
+.btn-secondary {
+  background-color: transparent;
+  color: var(--primary-purple);
+  border: 2px solid var(--primary-purple);
+  transition: all 0.3s ease;
+}
+
+.btn-secondary:hover {
+  background-color: var(--primary-purple);
+  color: var(--text-white);
+}
+
+.btn-gradient {
+  background: var(--bg-gradient);
+  color: var(--text-white);
+  border: none;
+  transition: all 0.3s ease;
+}
+
+.btn-gradient:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 10px 25px rgba(54, 30, 75, 0.3);
+}
+
+/* Card styles with your brand colors */
+.card-primary {
+  background-color: var(--bg-primary);
+  border: 1px solid var(--border-purple);
+  box-shadow: 0 4px 6px rgba(54, 30, 75, 0.1);
+}
+
+.card-purple {
+  background: var(--bg-gradient);
+  color: var(--text-white);
+  box-shadow: 0 8px 25px rgba(54, 30, 75, 0.2);
+}
+
+/* Section backgrounds */
+.section-light {
+  background-color: var(--bg-secondary);
+}
+
+.section-purple {
+  background: var(--bg-gradient);
+  color: var(--text-white);
+}
+
+/* Custom Tailwind-like utilities for your brand */
+.purple-gradient {
+  background: linear-gradient(135deg, var(--primary-purple) 0%, var(--primary-purple-light) 100%);
+}
+
+.text-gradient {
+  background: var(--bg-gradient);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}

@@ -119,37 +119,132 @@ const AchievementsSection = () => {
   ];
 
   return (
-    <section className="achievements">
+    <section className="achievements" style={{ backgroundColor: '#FFFFFF', padding: '60px 0' }}>
       <div className="container d-flex flex-column">
-        <div className="title title_purple_30px text-center pb-1">
+        <div 
+          className="title text-center pb-1" 
+          style={{ 
+            color: '#361E4B', 
+            fontSize: '30px', 
+            fontWeight: 'bold', 
+            marginBottom: '20px' 
+          }}
+        >
           Our Achievements
         </div>
-        <div className="counter-title fs-25 text-center pb-5">
+        <div 
+          className="counter-title text-center pb-5" 
+          style={{ 
+            fontSize: '25px', 
+            color: '#8F59A0', 
+            marginBottom: '50px' 
+          }}
+        >
           We are honoured to be recognised for our commitment to quality
         </div>
 
-        <div className="cardsBox d-flex justify-content-center">
+        <div 
+          className="cardsBox d-flex justify-content-center" 
+          style={{ 
+            flexWrap: 'wrap', 
+            gap: '20px',
+            marginBottom: '40px'
+          }}
+        >
           {achievements.map((achievement, index) => (
             <div
               key={index}
               className="card align-items-center text-center d-flex justify-content-around"
+              style={{
+                backgroundColor: '#FFFFFF',
+                border: '2px solid #E1C2DD',
+                borderRadius: '15px',
+                padding: '20px',
+                maxWidth: '300px',
+                minHeight: '350px',
+                boxShadow: '0 4px 15px rgba(142, 89, 160, 0.15)',
+                transition: 'all 0.3s ease',
+                cursor: 'pointer'
+              }}
+              onMouseEnter={(e) => {
+                e.currentTarget.style.transform = 'translateY(-5px)';
+                e.currentTarget.style.borderColor = '#8F59A0';
+                e.currentTarget.style.boxShadow = '0 8px 25px rgba(142, 89, 160, 0.25)';
+              }}
+              onMouseLeave={(e) => {
+                e.currentTarget.style.transform = 'translateY(0)';
+                e.currentTarget.style.borderColor = '#E1C2DD';
+                e.currentTarget.style.boxShadow = '0 4px 15px rgba(142, 89, 160, 0.15)';
+              }}
             >
               <img
                 src={achievement.image}
                 alt={achievement.alt}
                 loading="lazy"
+                style={{
+                  width: '100%',
+                  height: '200px',
+                  objectFit: 'contain',
+                  marginBottom: '15px'
+                }}
               />
-              <div className="card-body text-start text-center">
-                <p className="card-text">{achievement.text}</p>
+              <div className="card-body text-center">
+                <p 
+                  className="card-text" 
+                  style={{ 
+                    color: '#361E4B', 
+                    fontSize: '14px', 
+                    lineHeight: '1.4',
+                    margin: '0'
+                  }}
+                >
+                  {achievement.text}
+                </p>
               </div>
             </div>
           ))}
         </div>
 
-        <a className="link-text" href="/achievements-and-awards">
+        <a 
+          className="link-text text-center" 
+          href="/achievements-and-awards"
+          style={{
+            color: '#8F59A0',
+            fontSize: '18px',
+            textDecoration: 'none',
+            fontWeight: '600',
+            display: 'inline-flex',
+            alignItems: 'center',
+            justifyContent: 'center',
+            gap: '8px',
+            padding: '12px 24px',
+            border: '2px solid #8F59A0',
+            borderRadius: '25px',
+            transition: 'all 0.3s ease',
+            alignSelf: 'center',
+            marginTop: '20px'
+          }}
+          onMouseEnter={(e) => {
+            e.currentTarget.style.backgroundColor = '#8F59A0';
+            e.currentTarget.style.color = '#FFFFFF';
+          }}
+          onMouseLeave={(e) => {
+            e.currentTarget.style.backgroundColor = 'transparent';
+            e.currentTarget.style.color = '#8F59A0';
+          }}
+        >
           View All
-          <span className="custom-icon verticle_icon cust-ico-download mr-1">
-            <img src="images/icon-orange-arrow.png" alt="" loading="lazy" />
+          <span className="custom-icon verticle_icon cust-ico-download">
+            <img 
+              src="images/icon-orange-arrow.png" 
+              alt="" 
+              loading="lazy"
+              style={{
+                width: '16px',
+                height: '16px',
+                filter: 'hue-rotate(280deg) saturate(0.8)'
+              }}
+            />
           </span>
         </a>
       </div>

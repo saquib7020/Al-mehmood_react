@@ -105,7 +105,7 @@ const StudentJourneySection = () => {
   }
 
   return (
-    <div className="w-full py-12 sm:py-16 px-4" style={{ backgroundColor: '#f8f4f9' }}>
+    <div className="min-h-screen bg-gradient-to-br from-purple-50 to-purple-100 relative">
       <div className="max-w-7xl mx-auto">
         <h2 className="text-center text-2xl sm:text-3xl md:text-4xl font-normal mb-8 sm:mb-16 px-4" style={{ color: '#a855f7' }}>
           A Glimpse into a Student's Journey at Al-Mehmood

@@ -2,7 +2,7 @@ import React from 'react';
 
 const SchoolInfoSection = () => {
   return (
-    <div className="w-full py-8 sm:py-12 lg:py-16 px-4" style={{ backgroundColor: '#f5f2f0' }}>
+    <div className="min-h-screen bg-gradient-to-br from-purple-50 to-purple-100 relative">
       <div className="max-w-6xl mx-auto">
         {/* Title */}
         <h2

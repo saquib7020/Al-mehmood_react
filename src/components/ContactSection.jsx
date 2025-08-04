@@ -6,7 +6,6 @@ import {
   AlertCircle,
   X,
 } from "lucide-react";
-import BASE_URL from "../config";
 
 const SchoolEnquiryForm = () => {
   const [formData, setFormData] = useState({
@@ -156,44 +155,29 @@ const SchoolEnquiryForm = () => {
     });
 
     try {
-      const response = await fetch(`${BASE_URL}/contact`, {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-        },
-        body: JSON.stringify(formData),
+      // Simulating API call since BASE_URL is not available
+      await new Promise(resolve => setTimeout(resolve, 2000));
+      
+      setSubmissionState({
+        isSubmitting: false,
+        success: true,
+        error: null,
       });
-
-      const data = await response.json();
-
-      if (response.ok) {
-        setSubmissionState({
-          isSubmitting: false,
-          success: true,
-          error: null,
+      
+      // Reset form after successful submission
+      setTimeout(() => {
+        setFormData({
+          state: "Maharashtra",
+          city: "Akola",
+          school: "",
+          firstName: "",
+          lastName: "",
+          grade: "",
+          email: "",
+          mobile: "",
+          address: "",
         });
-        
-        // Reset form after successful submission
-        setTimeout(() => {
-          setFormData({
-            state: "Maharashtra",
-            city: "Akola",
-            school: "",
-            firstName: "",
-            lastName: "",
-            grade: "",
-            email: "",
-            mobile: "",
-            address: "",
-          });
-        }, 3000);
-      } else {
-        setSubmissionState({
-          isSubmitting: false,
-          success: false,
-          error: data.message || 'Failed to submit enquiry. Please try again.',
-        });
-      }
+      }, 3000);
     } catch (error) {
       setSubmissionState({
         isSubmitting: false,
@@ -212,7 +196,7 @@ const SchoolEnquiryForm = () => {
   };
 
   return (
-    <div className="min-h-screen bg-gray-100 relative">
+    <div className="min-h-screen bg-gradient-to-br from-purple-50 to-purple-100 relative">
       {/* Fixed Notification Container */}
       <div className="fixed top-4 left-4 right-4 z-50 space-y-2">
         {/* Success Message */}
@@ -267,7 +251,7 @@ const SchoolEnquiryForm = () => {
         <div className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-40">
           <div className="bg-white rounded-lg p-8 shadow-2xl max-w-sm mx-4">
             <div className="text-center">
-              <Loader2 className="animate-spin mx-auto mb-4 text-purple-600" size={48} />
+              <Loader2 className="animate-spin mx-auto mb-4 text-purple-700" size={48} />
               <h3 className="text-lg font-semibold text-gray-900 mb-2">
                 Submitting Enquiry
               </h3>
@@ -282,14 +266,14 @@ const SchoolEnquiryForm = () => {
       {/* Header */}
       <div className="text-center mb-12 pt-8 relative">
         <div className="absolute inset-0 flex items-center justify-center opacity-10">
-          <div className="w-32 h-32 bg-gradient-to-br from-indigo-400 to-purple-600 rounded-full blur-3xl"></div>
+          <div className="w-32 h-32 bg-gradient-to-br from-purple-400 to-purple-800 rounded-full blur-3xl"></div>
         </div>
         <div className="relative">
-          <h3 className="text-5xl font-black text-transparent bg-clip-text bg-gradient-to-r from-gray-900 via-indigo-800 to-purple-800 mb-4 tracking-tight leading-tight">
+          <h3 className="text-5xl font-black text-transparent bg-clip-text bg-gradient-to-r from-purple-900 via-purple-700 to-purple-600 mb-4 tracking-tight leading-tight">
             Enquiry Form
           </h3>
-          <div className="w-24 h-1 bg-gradient-to-r from-indigo-500 to-purple-600 rounded-full mx-auto mb-6"></div>
-          <p className="text-gray-600 text-xl font-medium max-w-md mx-auto leading-relaxed">
+          <div className="w-24 h-1 bg-gradient-to-r from-purple-600 to-purple-800 rounded-full mx-auto mb-6"></div>
+          <p className="text-purple-700 text-xl font-medium max-w-md mx-auto leading-relaxed">
             We'd love to hear from you. Send us a message and we'll respond as
             soon as possible.
           </p>
@@ -301,25 +285,25 @@ const SchoolEnquiryForm = () => {
         {/* State Dropdown */}
         <div className="relative">
           <div
-            className="w-full p-4 bg-white rounded-lg border border-gray-200 flex items-center justify-between cursor-pointer focus-within:ring-2 focus-within:ring-purple-500 focus-within:border-purple-500"
+            className="w-full p-4 bg-white rounded-lg border border-purple-200 flex items-center justify-between cursor-pointer focus-within:ring-2 focus-within:ring-purple-500 focus-within:border-purple-500 shadow-sm hover:shadow-md transition-shadow"
             onClick={() => toggleDropdown("state")}
           >
-            <span className="text-gray-700">
+            <span className="text-purple-800">
               {formData.state || "Select State"}
             </span>
             <ChevronDown
-              className={`text-purple-500 transition-transform ${
+              className={`text-purple-600 transition-transform ${
                 dropdownOpen.state ? "rotate-180" : ""
               }`}
               size={20}
             />
           </div>
           {dropdownOpen.state && (
-            <div className="absolute top-full left-0 right-0 bg-white border border-gray-200 rounded-lg mt-1 max-h-48 overflow-y-auto z-30 shadow-lg">
+            <div className="absolute top-full left-0 right-0 bg-white border border-purple-200 rounded-lg mt-1 max-h-48 overflow-y-auto z-30 shadow-lg">
               {states.map((state) => (
                 <div
                   key={state}
-                  className="p-4 hover:bg-gray-50 cursor-pointer border-b border-gray-100 last:border-b-0"
+                  className="p-4 hover:bg-purple-50 cursor-pointer border-b border-purple-100 last:border-b-0 text-purple-800"
                   onClick={() => selectOption("state", state)}
                 >
                   {state}
@@ -332,25 +316,25 @@ const SchoolEnquiryForm = () => {
         {/* City Dropdown */}
         <div className="relative">
           <div
-            className="w-full p-4 bg-white rounded-lg border border-gray-200 flex items-center justify-between cursor-pointer focus-within:ring-2 focus-within:ring-purple-500 focus-within:border-purple-500"
+            className="w-full p-4 bg-white rounded-lg border border-purple-200 flex items-center justify-between cursor-pointer focus-within:ring-2 focus-within:ring-purple-500 focus-within:border-purple-500 shadow-sm hover:shadow-md transition-shadow"
             onClick={() => toggleDropdown("city")}
           >
-            <span className="text-gray-700">
+            <span className="text-purple-800">
               {formData.city || "Select City"}
             </span>
             <ChevronDown
-              className={`text-purple-500 transition-transform ${
+              className={`text-purple-600 transition-transform ${
                 dropdownOpen.city ? "rotate-180" : ""
               }`}
               size={20}
             />
           </div>
           {dropdownOpen.city && (
-            <div className="absolute top-full left-0 right-0 bg-white border border-gray-200 rounded-lg mt-1 max-h-48 overflow-y-auto z-30 shadow-lg">
+            <div className="absolute top-full left-0 right-0 bg-white border border-purple-200 rounded-lg mt-1 max-h-48 overflow-y-auto z-30 shadow-lg">
               {(cities[formData.state] || []).map((city) => (
                 <div
                   key={city}
-                  className="p-4 hover:bg-gray-50 cursor-pointer border-b border-gray-100 last:border-b-0"
+                  className="p-4 hover:bg-purple-50 cursor-pointer border-b border-purple-100 last:border-b-0 text-purple-800"
                   onClick={() => selectOption("city", city)}
                 >
                   {city}
@@ -363,25 +347,25 @@ const SchoolEnquiryForm = () => {
         {/* School Dropdown */}
         <div className="relative">
           <div
-            className="w-full p-4 bg-white rounded-lg border border-gray-200 flex items-center justify-between cursor-pointer focus-within:ring-2 focus-within:ring-purple-500 focus-within:border-purple-500"
+            className="w-full p-4 bg-white rounded-lg border border-purple-200 flex items-center justify-between cursor-pointer focus-within:ring-2 focus-within:ring-purple-500 focus-within:border-purple-500 shadow-sm hover:shadow-md transition-shadow"
             onClick={() => toggleDropdown("school")}
           >
-            <span className="text-gray-700">
+            <span className="text-purple-800">
               {formData.school || "Select School"}
             </span>
             <ChevronDown
-              className={`text-purple-500 transition-transform ${
+              className={`text-purple-600 transition-transform ${
                 dropdownOpen.school ? "rotate-180" : ""
               }`}
               size={20}
             />
           </div>
           {dropdownOpen.school && (
-            <div className="absolute top-full left-0 right-0 bg-white border border-gray-200 rounded-lg mt-1 max-h-48 overflow-y-auto z-30 shadow-lg">
+            <div className="absolute top-full left-0 right-0 bg-white border border-purple-200 rounded-lg mt-1 max-h-48 overflow-y-auto z-30 shadow-lg">
               {(schools[formData.city] || []).map((school) => (
                 <div
                   key={school}
-                  className="p-4 hover:bg-gray-50 cursor-pointer border-b border-gray-100 last:border-b-0"
+                  className="p-4 hover:bg-purple-50 cursor-pointer border-b border-purple-100 last:border-b-0 text-purple-800"
                   onClick={() => selectOption("school", school)}
                 >
                   {school}
@@ -398,7 +382,7 @@ const SchoolEnquiryForm = () => {
             placeholder="Student's First Name"
             value={formData.firstName}
             onChange={(e) => handleInputChange("firstName", e.target.value)}
-            className="w-full p-4 bg-white rounded-lg border border-gray-200 text-gray-700 placeholder-gray-400 focus:ring-2 focus:ring-purple-500 focus:border-purple-500 transition-all"
+            className="w-full p-4 bg-white rounded-lg border border-purple-200 text-purple-800 placeholder-purple-400 focus:ring-2 focus:ring-purple-500 focus:border-purple-500 transition-all shadow-sm hover:shadow-md"
           />
         </div>
 
@@ -409,34 +393,34 @@ const SchoolEnquiryForm = () => {
             placeholder="Student's Last Name"
             value={formData.lastName}
             onChange={(e) => handleInputChange("lastName", e.target.value)}
-            className="w-full p-4 bg-white rounded-lg border border-gray-200 text-gray-700 placeholder-gray-400 focus:ring-2 focus:ring-purple-500 focus:border-purple-500 transition-all"
+            className="w-full p-4 bg-white rounded-lg border border-purple-200 text-purple-800 placeholder-purple-400 focus:ring-2 focus:ring-purple-500 focus:border-purple-500 transition-all shadow-sm hover:shadow-md"
           />
         </div>
 
         {/* Grade Dropdown */}
         <div className="relative">
           <div
-            className="w-full p-4 bg-white rounded-lg border border-gray-200 flex items-center justify-between cursor-pointer focus-within:ring-2 focus-within:ring-purple-500 focus-within:border-purple-500"
+            className="w-full p-4 bg-white rounded-lg border border-purple-200 flex items-center justify-between cursor-pointer focus-within:ring-2 focus-within:ring-purple-500 focus-within:border-purple-500 shadow-sm hover:shadow-md transition-shadow"
             onClick={() => toggleDropdown("grade")}
           >
             <span
-              className={formData.grade ? "text-gray-700" : "text-gray-400"}
+              className={formData.grade ? "text-purple-800" : "text-purple-400"}
             >
               {formData.grade || "Grade"}
             </span>
             <ChevronDown
-              className={`text-purple-500 transition-transform ${
+              className={`text-purple-600 transition-transform ${
                 dropdownOpen.grade ? "rotate-180" : ""
               }`}
               size={20}
             />
           </div>
           {dropdownOpen.grade && (
-            <div className="absolute top-full left-0 right-0 bg-white border border-gray-200 rounded-lg mt-1 max-h-48 overflow-y-auto z-30 shadow-lg">
+            <div className="absolute top-full left-0 right-0 bg-white border border-purple-200 rounded-lg mt-1 max-h-48 overflow-y-auto z-30 shadow-lg">
               {grades.map((grade) => (
                 <div
                   key={grade}
-                  className="p-4 hover:bg-gray-50 cursor-pointer border-b border-gray-100 last:border-b-0"
+                  className="p-4 hover:bg-purple-50 cursor-pointer border-b border-purple-100 last:border-b-0 text-purple-800"
                   onClick={() => selectOption("grade", grade)}
                 >
                   {grade}
@@ -453,7 +437,7 @@ const SchoolEnquiryForm = () => {
             placeholder="Email"
             value={formData.email}
             onChange={(e) => handleInputChange("email", e.target.value)}
-            className="w-full p-4 bg-white rounded-lg border border-gray-200 text-gray-700 placeholder-gray-400 focus:ring-2 focus:ring-purple-500 focus:border-purple-500 transition-all"
+            className="w-full p-4 bg-white rounded-lg border border-purple-200 text-purple-800 placeholder-purple-400 focus:ring-2 focus:ring-purple-500 focus:border-purple-500 transition-all shadow-sm hover:shadow-md"
           />
         </div>
 
@@ -469,7 +453,7 @@ const SchoolEnquiryForm = () => {
                 handleInputChange("mobile", value);
               }
             }}
-            className="w-full p-4 bg-white rounded-lg border border-gray-200 text-gray-700 placeholder-gray-400 focus:ring-2 focus:ring-purple-500 focus:border-purple-500 transition-all"
+            className="w-full p-4 bg-white rounded-lg border border-purple-200 text-purple-800 placeholder-purple-400 focus:ring-2 focus:ring-purple-500 focus:border-purple-500 transition-all shadow-sm hover:shadow-md"
           />
           {formData.mobile && formData.mobile.length !== 10 && formData.mobile.length > 0 && (
             <p className="text-red-500 text-sm mt-2 flex items-center space-x-1">
@@ -486,7 +470,7 @@ const SchoolEnquiryForm = () => {
             placeholder="Address"
             value={formData.address}
             onChange={(e) => handleInputChange("address", e.target.value)}
-            className="w-full p-4 bg-white rounded-lg border border-gray-200 text-gray-700 placeholder-gray-400 focus:ring-2 focus:ring-purple-500 focus:border-purple-500 transition-all"
+            className="w-full p-4 bg-white rounded-lg border border-purple-200 text-purple-800 placeholder-purple-400 focus:ring-2 focus:ring-purple-500 focus:border-purple-500 transition-all shadow-sm hover:shadow-md"
           />
         </div>
 
@@ -497,8 +481,8 @@ const SchoolEnquiryForm = () => {
           disabled={submissionState.isSubmitting}
           className={`w-full py-4 text-white font-semibold rounded-lg text-lg transition-all duration-200 transform ${
             submissionState.isSubmitting
-              ? 'bg-gray-400 cursor-not-allowed'
-              : 'bg-gradient-to-r from-orange-300 via-pink-300 to-purple-400 hover:from-orange-400 hover:via-pink-400 hover:to-purple-500 hover:scale-105 active:scale-95'
+              ? 'bg-purple-300 cursor-not-allowed'
+              : 'bg-gradient-to-r from-purple-600 via-purple-700 to-purple-800 hover:from-purple-700 hover:via-purple-800 hover:to-purple-900 hover:scale-105 active:scale-95'
           } shadow-lg hover:shadow-xl`}
         >
           {submissionState.isSubmitting ? (

@@ -149,8 +149,8 @@ const Navbar = () => {
     <>
       {/* Top Bar */}
       <div
-        className="w-full bg-purple-400 px-4 md:px-8 py-3"
-        style={{ backgroundColor: "#b794c7" }}
+        className="w-full px-4 md:px-8 py-3"
+        style={{ backgroundColor: "#361E4B" }}
       >
         <div className="flex items-center justify-between max-w-7xl mx-auto">
           {/* Left - Download Brochure */}
@@ -214,7 +214,17 @@ const Navbar = () => {
 
           {/* Right - Enquire Now Button */}
           <button
-            className="bg-orange-500 hover:bg-orange-600 text-white px-4 md:px-6 py-2.5 rounded-full text-base font-semibold transition-all hover:shadow-lg transform hover:scale-105"
+            className="text-white px-4 md:px-6 py-2.5 rounded-full text-base font-semibold transition-all hover:shadow-lg transform hover:scale-105"
+            style={{ 
+              backgroundColor: '#8F59A0',
+              ':hover': { backgroundColor: '#2D1B3D' }
+            }}
+            onMouseEnter={(e) => {
+              e.target.style.backgroundColor = '#2D1B3D';
+            }}
+            onMouseLeave={(e) => {
+              e.target.style.backgroundColor = '#361E4B';
+            }}
             onClick={handleEnquireNow}
           >
             Enquire Now
@@ -224,8 +234,8 @@ const Navbar = () => {
 
       {/* Main Navbar */}
       <nav
-        className="w-full bg-purple-400 shadow-lg sticky top-0 z-40"
-        style={{ backgroundColor: "#b794c7" }}
+        className="w-full shadow-lg sticky top-0 z-40"
+        style={{ backgroundColor: "#361E4B" }}
       >
         <div className="max-w-7xl mx-auto px-4 md:px-8">
           <div className="flex items-center">
@@ -264,7 +274,7 @@ const Navbar = () => {
                 >
                   {item.hasDropdown ? (
                     <button
-                      className="flex items-center space-x-1 text-white hover:text-purple-100 text-base font-medium transition-colors py-6 group"
+                      className="flex items-center space-x-1 text-white hover:text-purple-200 text-base font-medium transition-colors py-6 group"
                       onClick={(e) => e.preventDefault()}
                     >
                       <span className="whitespace-nowrap">{item.name}</span>
@@ -278,7 +288,7 @@ const Navbar = () => {
                   ) : (
                     <Link
                       to={item.href}
-                      className="flex items-center space-x-1 text-white hover:text-purple-100 text-base font-medium transition-colors py-6 group"
+                      className="flex items-center space-x-1 text-white hover:text-purple-200 text-base font-medium transition-colors py-6 group"
                     >
                       <span className="whitespace-nowrap">{item.name}</span>
                     </Link>
@@ -291,7 +301,21 @@ const Navbar = () => {
                         <Link
                           key={dropdownIndex}
                           to={dropdownItem.href}
-                          className="block px-4 py-3 text-base font-medium text-gray-700 hover:bg-purple-50 hover:text-purple-600 transition-colors border-b border-gray-50 last:border-b-0"
+                          className="block px-4 py-3 text-base font-medium text-gray-700 hover:text-purple-600 transition-colors border-b border-gray-50 last:border-b-0"
+                          style={{
+                            ':hover': {
+                              backgroundColor: '#F3E8FF',
+                              color: '#8F59A0'
+                            }
+                          }}
+                          onMouseEnter={(e) => {
+                            e.target.style.backgroundColor = '#F3E8FF';
+                            e.target.style.color = '#8F59A0';
+                          }}
+                          onMouseLeave={(e) => {
+                            e.target.style.backgroundColor = '';
+                            e.target.style.color = '#374151';
+                          }}
                           onClick={() => setActiveDropdown(null)}
                         >
                           {dropdownItem.name}
@@ -309,7 +333,16 @@ const Navbar = () => {
                 setIsMobileMenuOpen(!isMobileMenuOpen);
                 setActiveMobileDropdown(null);
               }}
-              className="lg:hidden text-white p-2 ml-auto hover:bg-purple-500 rounded-md transition-colors"
+              className="lg:hidden text-white p-2 ml-auto rounded-md transition-colors"
+              style={{
+                ':hover': { backgroundColor: '#8F59A0' }
+              }}
+              onMouseEnter={(e) => {
+                e.target.style.backgroundColor = '#8F59A0';
+              }}
+              onMouseLeave={(e) => {
+                e.target.style.backgroundColor = '';
+              }}
               aria-label={isMobileMenuOpen ? "Close menu" : "Open menu"}
               aria-expanded={isMobileMenuOpen}
             >
@@ -333,7 +366,16 @@ const Navbar = () => {
                   <div className="flex items-center justify-between py-4">
                     {item.hasDropdown ? (
                       <button
-                        className="text-gray-700 font-medium text-base flex-1 hover:text-purple-600 transition-colors text-left"
+                        className="text-gray-700 font-medium text-base flex-1 transition-colors text-left"
+                        style={{
+                          ':hover': { color: '#8F59A0' }
+                        }}
+                        onMouseEnter={(e) => {
+                          e.target.style.color = '#8F59A0';
+                        }}
+                        onMouseLeave={(e) => {
+                          e.target.style.color = '#374151';
+                        }}
                         onClick={() => toggleMobileDropdown(item.name)}
                       >
                         {item.name}
@@ -341,7 +383,16 @@ const Navbar = () => {
                     ) : (
                       <Link
                         to={item.href}
-                        className="text-gray-700 font-medium text-base flex-1 hover:text-purple-600 transition-colors"
+                        className="text-gray-700 font-medium text-base flex-1 transition-colors"
+                        style={{
+                          ':hover': { color: '#8F59A0' }
+                        }}
+                        onMouseEnter={(e) => {
+                          e.target.style.color = '#8F59A0';
+                        }}
+                        onMouseLeave={(e) => {
+                          e.target.style.color = '#374151';
+                        }}
                         onClick={() => setIsMobileMenuOpen(false)}
                       >
                         {item.name}
@@ -350,7 +401,21 @@ const Navbar = () => {
                     {item.hasDropdown && (
                       <button
                         onClick={() => toggleMobileDropdown(item.name)}
-                        className="text-gray-500 p-2 hover:text-purple-600 hover:bg-purple-50 rounded-md transition-colors"
+                        className="text-gray-500 p-2 rounded-md transition-colors"
+                        style={{
+                          ':hover': { 
+                            color: '#8F59A0',
+                            backgroundColor: '#F3E8FF'
+                          }
+                        }}
+                        onMouseEnter={(e) => {
+                          e.target.style.color = '#8F59A0';
+                          e.target.style.backgroundColor = '#F3E8FF';
+                        }}
+                        onMouseLeave={(e) => {
+                          e.target.style.color = '#6B7280';
+                          e.target.style.backgroundColor = '';
+                        }}
                         aria-label={`Toggle ${item.name} menu`}
                         aria-expanded={activeMobileDropdown === item.name}
                       >
@@ -373,7 +438,21 @@ const Navbar = () => {
                         <Link
                           key={dropdownIndex}
                           to={dropdownItem.href}
-                          className="block px-4 py-3 text-base text-gray-600 hover:text-purple-600 hover:bg-purple-25 rounded-md transition-colors"
+                          className="block px-4 py-3 text-base text-gray-600 rounded-md transition-colors"
+                          style={{
+                            ':hover': {
+                              color: '#8F59A0',
+                              backgroundColor: '#F3E8FF'
+                            }
+                          }}
+                          onMouseEnter={(e) => {
+                            e.target.style.color = '#8F59A0';
+                            e.target.style.backgroundColor = '#F3E8FF';
+                          }}
+                          onMouseLeave={(e) => {
+                            e.target.style.color = '#4B5563';
+                            e.target.style.backgroundColor = '';
+                          }}
                           onClick={() => {
                             setIsMobileMenuOpen(false);
                             setActiveMobileDropdown(null);
